@@ -24,24 +24,25 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        $first_list = array(
-            "first"=>"첫번째 메뉴"
-            ,"seconde"=>"두번째 메뉴"
-            ,"third"=>"세번째 메뉴"
-        );
-
-        $seconde_list = array(
-            "third"=>array(
-                "one"=>"세번째에 첫번째"
-                ,"two"=>"세번째에 두번째"
-            )
-        );
-
         View::composer('common.header', function($view) {
+            $first_list = array(
+                "first"=>"첫번째 메뉴"
+                ,"seconde"=>"두번째 메뉴"
+                ,"third"=>"세번째 메뉴"
+            );
+
+            $seconde_list = array(
+                "third"=>array(
+                    "one"=>"세번째에 첫번째"
+                    ,"two"=>"세번째에 두번째"
+                )
+            );
+
             $view
                 ->with('title', 'Buchet Homepage')
                 ->with('description', '부쳇의 홈페이지이입니다.')
-                // ->with('seconde_list',$seconde_list)
+                ->with('first_list',$first_list)
+                ->with('seconde_list',$seconde_list)
             ;
         });
     }
